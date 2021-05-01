@@ -1,6 +1,11 @@
-# defining rules to encode and decode string
+"""
+defining rules to encode the data
+each character will be paired to some random character
+"""
+
+
 def encodingRule():
-    # making pairs of each alphabet
+    # making pairs of each alphabet in a dictionary
     encoded_characters = {
 
         # Defining codes for Lowercase Alphabets
@@ -40,20 +45,38 @@ def encodingRule():
     return encoded_characters
 
 
+"""
+encoding the data entered by the user 
+encoded data will be returned in the form of string
+"""
+
+
 def encode(data_to_encode):
+    # creating an object of encodingRule()
+
     encoding_rules = encodingRule()
+
+    # declaring an empty string which will contain encoded data
     encoded_data = ""
 
+    # encoding the data
     for character in range(0, len(data_to_encode)):
         if data_to_encode[character] in encoding_rules.keys():
             encoded_data += encoding_rules[data_to_encode[character]]
         else:
             encoded_data += data_to_encode[character]
-
+    # returning the encoded data
     return encoded_data
 
 
 if __name__ == "__main__":
-    data = input("Input your message to encode: ")
-    print(encode(data))
+    print("***************Welcome to encoder***************")
+    print("You can encode \n1.your message\n2.URLs\n3.Email ID\n")
+    data = input("Input your data to encode: ")
+    encoded_result = encode(data)
+    print("Encoded data: " + encoded_result)
+    decoded_result = encode(encoded_result)
+    print("Decoded data: " + decoded_result)
+
+
 
